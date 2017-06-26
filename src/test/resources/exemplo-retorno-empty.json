@@ -1,0 +1,14 @@
+{
+   "destination_addresses" : [ "Lugar Qualquer" ],
+   "origin_addresses" : [ "Av. Colombo, 5790 - Zona 7, Maringá - PR, 87020-900, Brasil" ],
+   "rows" : [
+      {
+         "elements" : [
+            {
+               "status" : "ZERO_RESULTS"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

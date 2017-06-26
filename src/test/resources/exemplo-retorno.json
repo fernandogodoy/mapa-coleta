@@ -1,0 +1,24 @@
+{
+   "destination_addresses" : [
+      "Av. Dr. Alexandre Rasgulaeff, 498 - Jardim Alvorada, Maringá - PR, 87040-550, Brasil"
+   ],
+   "origin_addresses" : [ "Av. Colombo, 5790 - Zona 7, Maringá - PR, 87020-900, Brasil" ],
+   "rows" : [
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "2,8 km",
+                  "value" : 2770
+               },
+               "duration" : {
+                  "text" : "7 minutos",
+                  "value" : 390
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}
