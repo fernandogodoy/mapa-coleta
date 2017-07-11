@@ -12,7 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 public class SearchFormatter {
 
 	private static final String PLUS = "+";
-	private static final String PREFIX = "Maringá+PR+";
+	private static final String PREFIX = "Maringa+PR+";
 
 	/**
 	 * Substitui os espaços da palavra pelo caracter +
@@ -22,6 +22,10 @@ public class SearchFormatter {
 	 */
 	public static final String format(String nome) {
 		return StringUtils.join(PREFIX, StringUtils.replaceAll(nome, StringUtils.SPACE, PLUS));
+	}
+	
+	public static final String formatNoPrefox(String nome) {
+		return StringUtils.replaceAll(nome, StringUtils.SPACE, PLUS);
 	}
 
 }

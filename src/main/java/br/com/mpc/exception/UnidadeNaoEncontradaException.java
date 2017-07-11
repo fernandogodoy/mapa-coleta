@@ -12,5 +12,5 @@ public class UnidadeNaoEncontradaException extends RuntimeException {
 	public UnidadeNaoEncontradaException(String idUnidade) {
 		super("Unidade de Saúde "+ idUnidade + " não encontrada");
 	}
-
+	
 }

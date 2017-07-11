@@ -9,7 +9,7 @@ public class SearchFormatterTest {
 	@Test
 	public void test() {
 		String texto = "Unidade de Saude Alvorada I";
-		String experado = "Maringá+PR+Unidade+de+Saude+Alvorada+I";
+		String experado = "Maringa+PR+Unidade+de+Saude+Alvorada+I";
 		assertEquals(experado, SearchFormatter.format(texto));
 	}
 

@@ -1,6 +1,9 @@
 package br.com.mpc.model.app;
 
+import java.math.BigDecimal;
 import java.util.Objects;
+
+import br.com.fggraph.model.Vertex;
 
 /**
  * Representação dos pontos de localização
@@ -8,7 +11,9 @@ import java.util.Objects;
  * @author Fernando
  *
  */
-public class Ponto {
+public class Ponto implements Vertex {
+
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 
@@ -16,15 +21,19 @@ public class Ponto {
 
 	private String endereco;
 
+	private BigDecimal cost;
+
 	private boolean isVisitado;
 	
+	private Ponto vizinho;
+
 	/**
 	 * Restrição para criação de instâncias
 	 */
 	private Ponto() {
 	}
 
-	public String getNome() {
+	public String getName() {
 		return nome;
 	}
 
@@ -35,7 +44,7 @@ public class Ponto {
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void visitado() {
 		this.isVisitado = true;
 	}
@@ -44,10 +53,22 @@ public class Ponto {
 		return isVisitado;
 	}
 
+	public BigDecimal getCost() {
+		return cost;
+	}
+	
+	public Ponto getVizinho() {
+		return vizinho;
+	}
+
+	public String toNotificationInfo() {
+		return id + " - " + nome;
+	}
+
 	public static class PontoBuilder {
 
 		private Ponto ponto;
-		
+
 		public PontoBuilder() {
 			this.ponto = new Ponto();
 		}
@@ -92,9 +113,29 @@ public class Ponto {
 
 	@Override
 	public String toString() {
-		return id + " - "+ nome;
+		return id.toString();
 	}
 
-	
+	/**
+	 * Atribui {@link Integer#MAX_VALUE} para cada vertice
+	 * 
+	 */
+	public void atribuirPesoInicial() {
+		atualizarPeso(BigDecimal.valueOf(Integer.MAX_VALUE));
+	}
+
+	/**
+	 * Atualizar valor do peso
+	 * 
+	 * @param peso
+	 */
+	public void atualizarPeso(BigDecimal cost) {
+		this.cost = cost;
+	}
+
+	public void atualizarReferencia(Ponto vertice, BigDecimal peso){
+		atualizarPeso(peso);
+		this.vizinho = vertice;
+	}
 
 }

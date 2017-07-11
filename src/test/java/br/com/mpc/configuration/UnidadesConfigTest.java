@@ -25,7 +25,7 @@ public class UnidadesConfigTest {
 	@Test
 	public void shouldSuccessPropertFile() {
 		Ponto ponto = appConfig.getUnidade("2");
-		Assert.assertEquals("CASA DO PSF PAULINO (UBS Pinheiros)", ponto.getNome());
+		Assert.assertEquals("CASA DO PSF PAULINO (UBS Pinheiros)", ponto.getName());
 	}
 
 	@Test

@@ -25,7 +25,7 @@ import br.com.mpc.model.dto.Status;
 import br.com.mpc.rpc.GmapHttp;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { GMapRequestService.class })
+@SpringBootTest(classes = { GMapRequestService.class})
 public class GMapRequestTest {
 
 	@MockBean
@@ -39,7 +39,7 @@ public class GMapRequestTest {
 
 	@Test
 	public void shouldReturnResult() throws IOException {
-		URL resource = ClassLoader.getSystemResource("exemplo-retorno.json");
+		URL resource = ClassLoader.getSystemResource("responses/exemplo-retorno.json");
 		given(gMapHttp.get(Mockito.anyString())).willReturn(resource.openStream());
 
 		GMapMatrix gMapMatrix = gMapRequest.findLocation("UEM", "UBS");
@@ -57,7 +57,7 @@ public class GMapRequestTest {
 
 	@Test
 	public void shouldReturnEmpty() throws IOException {
-		URL resource = ClassLoader.getSystemResource("exemplo-retorno-empty.json");
+		URL resource = ClassLoader.getSystemResource("responses/exemplo-retorno-empty.json");
 		given(gMapHttp.get(Mockito.anyString())).willReturn(resource.openStream());
 
 		GMapMatrix gMapMatrix = gMapRequest.findLocation("UEM", "UBS");
@@ -70,7 +70,7 @@ public class GMapRequestTest {
 	
 	@Test
 	public void shouldReturnInvalidRequest() throws IOException {
-		URL resource = ClassLoader.getSystemResource("exemplo-retorno-invalid.json");
+		URL resource = ClassLoader.getSystemResource("responses/exemplo-retorno-invalid.json");
 		given(gMapHttp.get(Mockito.anyString())).willReturn(resource.openStream());
 
 		GMapMatrix gMapMatrix = gMapRequest.findLocation("UEM", "UBS");

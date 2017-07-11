@@ -42,12 +42,12 @@ public class GServiceTest {
 	@Test
 	public void sholdResturnSuccess() throws IOException {
 
-		montaRequestSuccess("exemplo-retorno.json");
+		montaRequestSuccess("responses/exemplo-retorno.json");
 		Aresta aresta = service.addAresta("1", "2");
 		assertNotNull(aresta);
-		assertEquals(Long.valueOf(1), aresta.getOrigem().getId());
-		assertEquals(Long.valueOf(2), aresta.getDestino().getId());
-		assertEquals(BigDecimal.valueOf(2770), aresta.getDistancia());
+		assertEquals(Long.valueOf(1), aresta.getOrigin().getId());
+		assertEquals(Long.valueOf(2), aresta.getTarget().getId());
+		assertEquals(BigDecimal.valueOf(2770), aresta.getCost());
 		assertEquals(BigDecimal.valueOf(390), aresta.getTempo());
 	}
 
@@ -56,15 +56,15 @@ public class GServiceTest {
 
 		expectedException.expect(UnidadeNaoEncontradaException.class);
 
-		montaRequestSuccess("exemplo-retorno.json");
-		service.addAresta("1", "4");
+		montaRequestSuccess("responses/exemplo-retorno.json");
+		service.addAresta("1", "100");
 	}
 
 	@Test
 	public void sholdReturn() throws IOException {
 
 		expectedException.expect(GMapMatrixValidationException.class);
-		montaRequestSuccess("exemplo-retorno-invalid.json");
+		montaRequestSuccess("responses/exemplo-retorno-invalid.json");
 		service.addAresta("1", "2");
 	}
 

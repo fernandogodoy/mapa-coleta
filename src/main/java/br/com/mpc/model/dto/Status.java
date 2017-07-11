@@ -7,5 +7,5 @@ package br.com.mpc.model.dto;
  */
 public enum Status {
 
-	OK, INVALID_REQUEST, ZERO_RESULTS;
+	OK, INVALID_REQUEST, ZERO_RESULTS, NOT_FOUND;
 }

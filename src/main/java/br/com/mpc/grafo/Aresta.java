@@ -6,9 +6,12 @@ import java.util.Objects;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import br.com.fggraph.model.Edge;
 import br.com.mpc.model.app.Ponto;
 
-public class Aresta implements Comparable<Aresta> {
+public class Aresta implements Edge {
+
+	private static final long serialVersionUID = 1L;
 
 	private Ponto origem;
 
@@ -17,6 +20,15 @@ public class Aresta implements Comparable<Aresta> {
 	private BigDecimal distancia;
 
 	private BigDecimal tempo;
+	
+	private boolean isFixa;
+	
+	public Aresta(Ponto origem, Ponto destino, Long distancia) {
+		this.origem = origem;
+		this.destino = destino;
+		this.distancia = BigDecimal.valueOf(distancia);
+		this.tempo = BigDecimal.ZERO;
+	}
 
 	public Aresta(Ponto origem, Ponto destino, Long distancia, Long tempo) {
 		this.origem = origem;
@@ -32,20 +44,28 @@ public class Aresta implements Comparable<Aresta> {
 		this.tempo = distancia;
 	}
 
-	public Ponto getOrigem() {
+	public Ponto getOrigin() {
 		return origem;
 	}
 
-	public Ponto getDestino() {
+	public Ponto getTarget() {
 		return destino;
 	}
 
-	public BigDecimal getDistancia() {
+	public BigDecimal getCost() {
 		return distancia;
 	}
 
 	public BigDecimal getTempo() {
 		return tempo;
+	}
+	
+	public boolean isFixa(){
+		return isFixa;
+	}
+	
+	public void fixar(){
+		this.isFixa = true;
 	}
 
 	@Override
@@ -65,13 +85,11 @@ public class Aresta implements Comparable<Aresta> {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("origem", origem.getNome()).append("destino", destino.getNome())
-				.append("distancia", distancia).append("tempo", tempo).toString();
-	}
-
-	@Override
-	public int compareTo(Aresta o) {
-		return this.getDistancia().compareTo(o.getDistancia());
+		return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
+				.append("origem", origem.getName())
+				.append("destino", destino.getName())
+				.append("distancia", distancia)
+				.append("tempo", tempo).toString();
 	}
 
 }
