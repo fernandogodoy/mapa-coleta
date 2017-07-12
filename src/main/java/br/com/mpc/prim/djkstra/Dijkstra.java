@@ -42,6 +42,12 @@ public class Dijkstra {
 	}
 
 	public Arvore run() {
+		if (grafo.getArestas().size() == 1 && grafo.getArestas().get(0).isFixa()) {
+			Arvore arvore = new Arvore();
+			arvore.add(grafo.getArestas().get(0));
+			return arvore;
+		}
+		
 		grafo.inicializar();
 		grafo.atualizarPeso(origem, BigDecimal.ZERO);
 		rotular(origem);
@@ -72,6 +78,7 @@ public class Dijkstra {
 		arestas.forEach(aresta -> arvore.add(aresta));
 		return arvore;
 	}
+	
 
 	/**
 	 * Rotula o vertice selecionado

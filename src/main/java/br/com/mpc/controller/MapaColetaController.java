@@ -56,6 +56,7 @@ public class MapaColetaController {
 	@RequestMapping(path = "/caminho-minimo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<GraphDTO> gerarCaminho() {
 		Arvore arvore = dijkstra.config(service.getGrafo()).run();
+		service.removeSelecionados(arvore.getEdges());
 		ResponseBuilder<Arvore> builder = new ResponseBuilder<>(arvore).withTextResult().withCost();
 		gerarGrafico(arvore, "Caminho Mínimo - DIJKSTRA");
 		return new ResponseEntity<>(new GraphDTO(builder.build(), arvore.getTempo()), HttpStatus.OK);

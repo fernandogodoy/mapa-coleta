@@ -26,29 +26,35 @@ public class DijkstraTest {
 
 	@Autowired
 	private Dijkstra dikstra;
-	
+
 	@MockBean
 	private UnidadeConfig config;
-	
+
 	private Grafo grafo;
 
 	@Before
 	public void setUp() {
 		grafo = FileUtil.readDijkstraFile();
 	}
-	
-	
+
 	@Test
 	public void shouldSuccess() {
 		given(config.getUnidade("1")).willReturn(grafo.buscar(new PontoBuilder().withId(1l).build()));
 		given(config.getUnidade("2")).willReturn(grafo.buscar(new PontoBuilder().withId(9l).build()));
-		
+
 		dikstra.config(grafo);
 		Arvore arvore = dikstra.run();
 		assertNotNull(arvore);
+		assertEquals(4, arvore.getEdges().size());
 		ResultDTO dto = new ResponseBuilder<>(arvore).withCost().withTextResult().build();
-		System.out.println(dto.getResult());
 		assertEquals(24, dto.getCost().intValue());
+
+		arvore = dikstra.run();
+		assertNotNull(arvore);
+		assertEquals(4, arvore.getEdges().size());
+		dto = new ResponseBuilder<>(arvore).withCost().withTextResult().build();
+		assertEquals(24, dto.getCost().intValue());
+
 	}
 
 }

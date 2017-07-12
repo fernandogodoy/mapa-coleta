@@ -1,6 +1,7 @@
 package br.com.mpc.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -85,5 +86,9 @@ public class MapaColetaService {
 		Arvore arvore = new Arvore();
 		arestas.forEach(arvore::add);
 		return arvore;
+	}
+
+	public void removeSelecionados(List<Aresta> edges) {
+		this.arestas.removeIf(aresta -> !aresta.isFixa());
 	}
 }

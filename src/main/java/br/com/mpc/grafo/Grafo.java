@@ -98,7 +98,9 @@ public class Grafo {
 		return new ArrayList<>(vertices);
 	}
 	
-	
+	public List<Aresta> getArestas() {
+		return new ArrayList<>(arestas);
+	}
 
 	public void atualizarPeso(Ponto origem, BigDecimal peso) {
 		arestas.stream()
@@ -130,9 +132,4 @@ public class Grafo {
 				.findFirst()
 				.get();
 	}
-
-	public void removerArestaFixa(Ponto origem, Ponto destino) {
-		this.arestas.removeIf(aresta -> aresta.getOrigin().equals(origem) && aresta.getTarget().equals(destino));
-	}
-
 }
